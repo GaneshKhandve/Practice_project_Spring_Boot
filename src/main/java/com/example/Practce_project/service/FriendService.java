@@ -14,6 +14,9 @@ public class FriendService {
     @Autowired
     private FriendRepository friendRepository;
 
+//    public FriendService(FriendRepository friendRepository){
+//        this.friendRepository =friendRepository;
+//    }
 
     public FriendsInfo savefreinddetails(FriendsInfo friendsInfo) {
         return friendRepository.save(friendsInfo);
@@ -88,5 +91,9 @@ public class FriendService {
 
     public void deleteFriendByOccupation(String occupation) {
         friendRepository.deleteByOccupation(occupation);
+    }
+
+    public List<FriendsInfo> getFriendByName(String name) {
+       return friendRepository.findByName(name);
     }
 }

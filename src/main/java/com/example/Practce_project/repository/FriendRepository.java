@@ -39,4 +39,9 @@ public interface FriendRepository extends JpaRepository<FriendsInfo, Long> {
     @Query(value = "SELECT * FROM temp_friends", nativeQuery = true)
     List<FriendsInfo> fetchTempFriends();
 
+
+    @Query(value = "SELECT * FROM friends_info f WHERE f.name LIKE %:name%", nativeQuery = true)
+    List<FriendsInfo> findByName(@Param("name") String name);
+
+
 }

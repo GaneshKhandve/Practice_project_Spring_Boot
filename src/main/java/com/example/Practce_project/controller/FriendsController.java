@@ -15,6 +15,9 @@ import java.util.Map;
 public class FriendsController {
     @Autowired
     private FriendService friendService;
+    public FriendsController (FriendService friendService){
+        this.friendService=friendService;
+    }
 
     @PostMapping("/")
     public FriendsInfo friendsInfo(@RequestBody FriendsInfo friendsInfo) {
@@ -30,6 +33,11 @@ public class FriendsController {
     public List<FriendsInfo> getFriendsByAge(@PathVariable Integer age) {
         return friendService.getFriendsByAge(age);
     }
+      @GetMapping("/name/{name}")
+    public List<FriendsInfo> getFriendByName( @PathVariable String name){
+        return friendService.getFriendByName(name);
+    }
+
 
     @GetMapping("/occupation/{occupation}")
     public List<FriendsInfo> getFriendsByOccupation(@PathVariable String occupation) {
